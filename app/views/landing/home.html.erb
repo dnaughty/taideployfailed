@@ -33,10 +33,9 @@
 	      	 	<h2><%= link_to 'Take a tour', new_user_session_path %></h2>
 	      	 <% end %>	
 	      	 
-	      	 <% if !user_signed_in? %>
+	      	 
 	      	 	<%= link_to 'new', new_user_session_path %> 
-			  <% end %>	
-
+			
 	      	 <%= link_to 'district', districts_path %>
 	      	 
           </div>
