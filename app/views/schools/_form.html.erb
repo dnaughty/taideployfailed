@@ -1,0 +1,47 @@
+<%= form_with(model: [@district, school], local: true) do |form| %>
+  <% if school.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
+
+      <ul>
+        <% school.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sname %>
+    <%= form.text_field :sname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stown %>
+    <%= form.text_field :stown %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sstate %>
+    <%= form.text_field :sstate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :szip %>
+    <%= form.text_field :szip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :district_id %>
+    <%= form.text_field :district_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
