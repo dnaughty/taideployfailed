@@ -42,10 +42,10 @@
                     <td><%= link_to "KPI's", district %></td> 
 
                     <td><%= link_to "Schools", district_schools_path(district) %> <br> </td> 
-                    <% if policy(district).edit? || policy(district).edit? %>
+                    <% if current_user.role == "districtadmin" || current_user.role == "superadmin" %>
                         <td><%= link_to 'Edit', edit_district_path(district) %> </td>
                       <% end %>
-                    <% if policy(district).destroy? %>
+                    <% if current_user.role == "districtadmin" || current_user.role == "superadmin" %>
                       <td><%= link_to 'Destroy', district, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                     <% end %>
                   </tr>
