@@ -23,7 +23,7 @@
 
   <div class="fields">
     <%= f.label :role %><br />
-    <%= f.select :role, User.roles.keys %>
+    <%= f.select :role, options_for_select(User.roles.keys.map { |key, value| [key.titleize, User.roles.key(value)]}, @user.role) %>
   </div>
 
   <div class="actions"><br />

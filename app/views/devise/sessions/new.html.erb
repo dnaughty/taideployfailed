@@ -18,48 +18,9 @@
         </div>
     </div>
 
-    <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+    <div class="col-md-2 p-0 bg-white h-md-100 loginarea">
         <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-          <div>
-             <h1>TAI Tour</h1><br>
-             <h3>Please take the tour in this order:</h5>
-              <div class="card">
-                <h5>District Administrator</h5>
-                <h5>Email: districtadmintour@tai.com</h5>
-                <h5>Password: 123456</h5>
-              </div>  
-
-              <div class="card">
-                <h5>School Administrator</h5>
-                <h5>Email: </h5>
-                <h5>Password: 123456</h5>
-              </div> 
-
-              <div class="card">
-                <h5>Teacher</h5>
-                <h5>Email: </h5>
-                <h5>Password: 123456</h5>
-              </div>   
-
-              <div class="card">
-                <h5>Student</h5>
-                <h5>Email: </h5>
-                <h5>Password: 123456</h5>
-              </div>  
-
-          </div>
-          
-        </div>
-
-          
-    </div>
-
-    
-
-    <!-- Second Half -->
-    <div class="col-md-3 p-0 bg-white h-md-100 loginarea">
-        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -82,4 +43,47 @@
   </div>
 <% end %>
         </div>
+    </div>
+
+          
+
+    
+
+    <!-- Second Half -->
+    <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+
+
+    <div>
+             <h1>TAI Tour</h1><br>
+             <h3>Please take the tour in this order:</h5>
+              <div class="card">
+                <h5>District Administrator</h5>
+                <h5>Email: districtadmintour@tai.com</h5>
+                <h5>Password: 123456</h5>
+              </div>  
+
+              <div class="card">
+                <h5>School Administrator</h5>
+                <h5>Email: schooladmintour@tai.com </h5>
+                <h5>Password: 123456</h5>
+              </div> 
+
+              <div class="card">
+                <h5>Teacher</h5>
+                <h5>Email: teachertour@tai.com </h5>
+                <h5>Password: 123456</h5>
+              </div>   
+
+              <div class="card">
+                <h5>Student</h5>
+                <h5>Email: </h5>
+                <h5>Password: 123456</h5>
+              </div>  
+
+          </div>
+          
+        </div>
+
+          
     </div>
