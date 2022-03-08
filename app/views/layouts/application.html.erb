@@ -32,12 +32,15 @@
           </li>
           
         </ul>
-      </div>
-          <p class="notice"><%= notice %></p>
-                 <p class="alert"><%= alert %></p>
-    </nav>
-         
 
+      </div>
+         
+    </nav>
+        <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p> 
+     <% if !current_user.nil? %>
+        <%= current_user.role %>  
+    <% end %>
 
         <%= yield %>
 

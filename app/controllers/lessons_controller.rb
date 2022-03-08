@@ -11,41 +11,54 @@ class LessonsController < ApplicationController
   def show
   end
 
+
   # GET /lessons/new
   def new
     @lesson = @school.lessons.build
+    authorize @lesson
   end
 
   # GET /lessons/1/edit
   def edit
+    authorize @lesson
   end
 
   # POST /lessons or /lessons.json
   def create
-    @lesson = @school.lessons.build(lesson_params)
+    unless signed_in?
+      redirect_to new_user_session_path
+    else
+      authorize Lesson 
+        @lesson = @school.lessons.build(lesson_params)
 
-    respond_to do |format|
-      if @lesson.save
-        format.html { redirect_to school_lessons_path(@lesson), notice: "Lesson was successfully created." }
-        format.json { render :show, status: :created, location: @lesson }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @lesson.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          if @lesson.save
+            format.html { redirect_to school_lessons_path(@school), notice: "Lesson was successfully created." }
+            format.json { render :show, status: :created, location: @lesson }
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @lesson.errors, status: :unprocessable_entity }
+          end
+        end
       end
-    end
   end
 
   # PATCH/PUT /lessons/1 or /lessons/1.json
   def update
-    respond_to do |format|
-      if @lesson.update(lesson_params)
-        format.html { redirect_to lesson_url(@lesson), notice: "Lesson was successfully updated." }
-        format.json { render :show, status: :ok, location: @lesson }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @lesson.errors, status: :unprocessable_entity }
+    unless signed_in?
+      redirect_to new_user_session_path
+    else
+      authorize Lesson
+        respond_to do |format|
+          if @lesson.update(lesson_params)
+            format.html { redirect_to lesson_path(@lesson), notice: "Lesson was successfully updated." }
+            format.json { render :show, status: :ok, location: @lesson }
+          else
+            format.html { render :edit, status: :unprocessable_entity }
+            format.json { render json: @lesson.errors, status: :unprocessable_entity }
+          end
+        end
       end
-    end
   end
 
   # DELETE /lessons/1 or /lessons/1.json
@@ -60,13 +73,13 @@ class LessonsController < ApplicationController
 
   private
 
-    def get_school
-      @school = School.find(params[:school_id])
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
       @lesson = Lesson.find(params[:id])
+    end
+
+    def get_school
+      @school = School.find(params[:school_id])
     end
 
     # Only allow a list of trusted parameters through.

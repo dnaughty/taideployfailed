@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <div class="d-md-flex h-md-100 align-items-center">
 
@@ -31,7 +31,10 @@
                   <%= @district.dcountry %>
                 </p>
 
-                <%= link_to 'Edit', edit_district_path(@district) %> |
+                <% if policy(@district).destroy? %>
+                  <%= link_to 'Edit', edit_district_path(@district) %> |
+                <% end %>
+
                 <%= link_to 'Back', districts_path %>
             </div>
         </div>
@@ -40,32 +43,32 @@
     <!-- Second Half -->
     <div class="col-md-9 p-0 bg-white h-md-100 loginarea">
         <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-           <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Schools in District</h5>
+           <div class="row">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Schools in District</h5>
+                
+                <h3 class="card-text"><%= @district.schools.count %></h3>
             
-            <h3 class="card-text"><%= @district.schools.count %></h3>
-            
+              </div>
+            </div>
           </div>
+           
 
-           <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Students in District</h5>
-            
-            <h3 class="card-text">Coming soon</h3>
-            
-          </div>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Students in District</h5>
+                <h3 class="card-text">Coming soon</h3>
+              </div>
+            </div>
 
-           <div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <h5 class="card-title">Avg Grades in District</h5>
-            
-            <h3 class="card-text">Coming soon</h3>
-            
-          </div>
-</div>
-</div>
-        </div>
-    </div>
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Avg Grades in District</h5>                
+                <h3 class="card-text">Coming soon</h3>
+              </div>
+            </div>
+        
+      </div>
         
 </div>

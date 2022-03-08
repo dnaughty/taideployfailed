@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class SchoolPolicy < ApplicationPolicy
+class LessonPolicy < ApplicationPolicy
   attr_reader :current_user, :record
 
-  def initialize(current_user,school)
+  def initialize(current_user, lesson)
     @current_user = current_user
-    @school = school
+    @lesson = lesson
   end
 
   def index?
@@ -17,23 +17,23 @@ class SchoolPolicy < ApplicationPolicy
   end
 
   def create?
-    @current_user.superadmin? || @current_user.districtadmin?
+    @current_user.superadmin? ||  @current_user.schooladmin?
   end
 
   def new?
-    @current_user.superadmin? || @current_user.districtadmin?
+   @current_user.superadmin? ||  @current_user.schooladmin?
   end
 
   def update?
-   @current_user.superadmin? || @current_user.districtadmin?
+   @current_user.superadmin? ||  @current_user.schooladmin?
   end
 
   def edit?
-   @current_user.superadmin? || @current_user.districtadmin?
+    @current_user.superadmin? ||  @current_user.schooladmin?
   end
 
   def destroy?
-   @current_user.superadmin? || @current_user.districtadmin?
+   @current_user.superadmin? ||  @current_user.schooladmin?
   end
 
   class Scope
@@ -48,6 +48,6 @@ class SchoolPolicy < ApplicationPolicy
 
     private
 
-    attr_reader :user, :school
+    attr_reader :user, :lesson
   end
 end

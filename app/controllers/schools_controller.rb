@@ -19,7 +19,7 @@ class SchoolsController < ApplicationController
 
   # GET /schools/1/edit
   def edit
-   
+  
   end
 
   # POST /schools or /schools.json
@@ -63,12 +63,13 @@ class SchoolsController < ApplicationController
 
   # DELETE /schools/1 or /schools/1.json
   def destroy
-    @school.destroy
+    authorize District
+        @school.destroy
 
-    respond_to do |format|
-      format.html { redirect_to districts_path(@school.district_id), notice: "School was successfully destroyed." }
-      format.json { head :no_content }
-    end
+        respond_to do |format|
+          format.html { redirect_to districts_path(@school.district_id), notice: "School was successfully destroyed." }
+          format.json { head :no_content }
+        end
   end
 
   private

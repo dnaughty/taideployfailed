@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
 			flash[:notice] = "Sorry, You are not authorized to do this"
 			redirect_to(request.referrer) || root_path
 		end
+
+
+		def configure_permitted_parameters
+			devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+		end
 end
