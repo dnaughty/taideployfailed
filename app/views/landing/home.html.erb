@@ -29,15 +29,16 @@
 	          TAI is a educational web app that tracks an educational career of a student from the start of his education until it's completion. It is a safe, secure way to track and tailor a students education so that they fulfill they're potential.
 	      	 </p>
 
-	      	 <% if !user_signed_in? %>
-	      	 	<h2><%= link_to 'Take a tour', new_user_session_path %></h2>
-	      	 <% end %>	
-	      	 
 	      	
-	      	 	<%= link_to 'new', new_user_session_path %>  |
+	      	 	<h2><%= link_to 'Take a tour', new_user_session_path %></h2>
+	      	 	
+	      	 
+	      		<% if user_signed_in? || current_user == 0  %>
+	      	 		<%= link_to 'new', new_user_session_path %>  |
 	      	
 
-	      	 	<%= link_to 'Create', new_user_registration_path %> |
+	      	 		<%= link_to 'Create', new_user_registration_path %> |
+	      	 	<% end %>
 			
 	      	 <%= link_to 'district', districts_path %>
 	      	 
