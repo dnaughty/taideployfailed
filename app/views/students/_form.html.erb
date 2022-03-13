@@ -1,0 +1,85 @@
+<%= form_with(model: [@school, student], local: true) do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+        <% student.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :middlename %>
+    <%= form.text_field :middlename %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dob %>
+    <%= form.text_field :dob %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street %>
+    <%= form.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip %>
+    <%= form.text_field :zip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pronouns %>
+    <%= form.text_field :pronouns %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :school_id %>
+    <%= form.text_field :school_id %>
+  </div>
+
+   
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= form_with(model: [@school, student], local: true) do |form| %> 
+<%= form.label :lessons %><br>
+    <% for lesson in @student.school.lessons %>
+      <%= check_box_tag "student[lesson_ids][]", lesson.id, @student.lessons.include?(lesson) %>
+      <%=h lesson.lessname %><br>
+    <% end %>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+

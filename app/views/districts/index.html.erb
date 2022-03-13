@@ -33,12 +33,12 @@
 
 
                     
-                    <td><%= district.dname %></td>
+                    <td><%= link_to district.dname, district %></td>
                     <td><%= district.dcity %></td>
                     <td><%= district.dcounty %></td>
                     <td><%= district.dstate %></td>
                     <td><%= district.dcountry %></td>
-                    <td><%= link_to "KPI's", district %></td> 
+                    
 
                     <td><%= link_to "Schools", district_schools_path(district) %> <br> </td> 
                     <% if current_user.role == "districtadmin" || current_user.role == "superadmin" %>

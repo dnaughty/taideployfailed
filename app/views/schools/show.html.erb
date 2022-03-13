@@ -34,7 +34,7 @@
 
 
                 <%= link_to 'Edit', edit_school_path(@school) %> |
-                <%= link_to 'Back', :back %>
+                <%= link_to 'Back', district_schools_path(@school.district_id) %>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Students</h5>
-                <h1 class="card-text">0</h1>
+                <h1 class="card-text"><%= @school.students.count %></h1>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>

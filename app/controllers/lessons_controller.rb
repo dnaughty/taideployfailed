@@ -63,10 +63,11 @@ class LessonsController < ApplicationController
 
   # DELETE /lessons/1 or /lessons/1.json
   def destroy
+    authorize Lesson
     @lesson.destroy
 
     respond_to do |format|
-      format.html { redirect_to school_lessons_path(@school), notice: "Lesson was successfully destroyed." }
+      format.html { redirect_to school_lessons_path(@lesson.school_id), notice: "Lesson was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -84,6 +85,6 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
-      params.require(:lesson).permit(:lessname, :lessnum, :lessfield, :startdate, :enddate, :starttime, :endtime, :school_id)
+      params.require(:lesson).permit(:lessname, :lessnum, :lessfield, :startdate, :enddate, :starttime, :endtime, :school_id, teacher_ids: [])
     end
 end

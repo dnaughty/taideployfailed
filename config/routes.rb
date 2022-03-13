@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   
   
+  
+  
+  
   devise_for :users
   get 'landing/home'
 
@@ -8,9 +11,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :districts, shallow: true do
-
     resources :schools, shallow: true do
-    resources :lessons
+      resources :lessons
+      resources :students
+      resources :teachers
     end 
   end
   

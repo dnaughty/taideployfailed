@@ -1,0 +1,54 @@
+<%= form_with(model: [@school, teacher], local: true) do |form| %>
+  <% if teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+        <% teacher.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :firstn %>
+    <%= form.text_field :firstn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lastn %>
+    <%= form.text_field :lastn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :teachnum %>
+    <%= form.text_field :teachnum %>
+  </div>
+
+  <div class="field">
+    <%= form.label :school_id %>
+    <%= form.text_field :school_id %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<p>
+  <%= form_with(model: [@school, teacher], local: true) do |form| %>
+    <%= form.label :lessons %><br>
+    <% for lesson in @teacher.school.lessons %>
+      <%= check_box_tag "teacher[lesson_ids][]", lesson.id, @teacher.lessons.include?(lesson) %>
+      <%=h lesson.lessname %><br>
+    <% end %>
+  </p>
+
+ 
+   <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -66,6 +66,8 @@ class SchoolsController < ApplicationController
     authorize District
         @school.destroy
 
+        
+
         respond_to do |format|
           format.html { redirect_to districts_path(@school.district_id), notice: "School was successfully destroyed." }
           format.json { head :no_content }
@@ -84,6 +86,6 @@ class SchoolsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def school_params
-      params.require(:school).permit(:sname, :street, :stown, :sstate, :szip, :district_id)
+      params.require(:school).permit(:sname, :street, :stown, :sstate, :szip, :district_id,lesson_ids: [], school_ids: [])
     end
 end

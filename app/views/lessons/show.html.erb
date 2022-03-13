@@ -1,44 +1,74 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Lessname:</strong>
-  <%= @lesson.lessname %>
-</p>
 
-<p>
-  <strong>Lessnum:</strong>
-  <%= @lesson.lessnum %>
-</p>
 
-<p>
-  <strong>Lessfield:</strong>
-  <%= @lesson.lessfield %>
-</p>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @lesson.startdate %>
-</p>
 
-<p>
-  <strong>Enddate:</strong>
-  <%= @lesson.enddate %>
-</p>
 
-<p>
-  <strong>Starttime:</strong>
-  <%= @lesson.starttime %>
-</p>
 
-<p>
-  <strong>Endtime:</strong>
-  <%= @lesson.endtime %>
-</p>
+<div class="d-md-flex h-md-100 align-items-center">
 
-<p>
-  <strong>School:</strong>
-  <%= @lesson.school_id %>
-</p>
+    <!-- First Half -->
+    <div class="col-md-3 p-0 bg-indigo h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+            <div class="logoarea pt-5 pb-5">
+                  <% for x in @lesson.teachers%>
+                    <h4><%= "#{x.lastn}, #{x.firstn}" %></h4>    
+                  <% end %>
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', :back %>
+                  <p>
+                    <strong>Lessname:</strong>
+                    <%= @lesson.lessname %>
+                  </p>
+
+                  <p>
+                    <strong>Lessnum:</strong>
+                    <%= @lesson.lessnum %>
+                  </p>
+
+                  <p>
+                    <strong>Lessfield:</strong>
+                    <%= @lesson.lessfield %>
+                  </p>
+
+                  <p>
+                    <strong>Startdate:</strong>
+                    <%= @lesson.startdate %>
+                  </p>
+
+                  <p>
+                    <strong>Enddate:</strong>
+                    <%= @lesson.enddate %>
+                  </p>
+
+                  <p>
+                    <strong>Starttime:</strong>
+                    <%= @lesson.starttime %>
+                  </p>
+
+                  <p>
+                    <strong>Endtime:</strong>
+                    <%= @lesson.endtime %>
+                  </p>
+
+                  <p>
+                    <strong>School:</strong>
+                    <%= @lesson.school_id %>
+                  </p>
+
+                  <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+                  <%= link_to 'Back', school_lessons_path(@lesson.school.id) %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Half -->
+    <div class="col-md-9 p-0 bg-white h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+           <% for x in @lesson.students %>
+            <h1><%= link_to x.lastname, student_path(x.id) %></h1>    
+          <% end %>
+        </div>
+    </div>
+        
+</div>

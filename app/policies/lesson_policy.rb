@@ -7,6 +7,7 @@ class LessonPolicy < ApplicationPolicy
     @current_user = current_user
     @lesson = lesson
   end
+  
 
   def index?
     true

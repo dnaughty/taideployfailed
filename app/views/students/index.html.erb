@@ -1,0 +1,63 @@
+<div class="d-md-flex h-md-100 align-items-center">
+
+    <!-- First Half -->
+    <div class="col-md-3 p-0 bg-indigo h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+            <div class="logoarea pt-5 pb-5">
+              <%= @school.sname %>
+                <h1>Students</h1>
+                <%= link_to 'New Student', new_school_student_path %> |
+                <%= link_to 'Back', district_schools_path(@school.district.id) %>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Half -->
+    <div class="col-md-9 p-0 bg-white h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+           <table>
+            <thead>
+              <tr>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Middlename</th>
+                <th>Dob</th>
+                
+                <th>Pronouns</th>
+                <th>Gender</th>
+                <th>School</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @students.each do |student| %>
+                <tr>
+                  <td><%= link_to student.lastname, student  %></td>
+                  <td><%= student.firstname %></td>
+                  <td><%= student.middlename %></td>
+                  <td><%= student.dob %></td>
+                  
+                  <td><%= student.pronouns %></td>
+                  <td><%= student.gender %></td>
+                  <td><%= student.school_id %></td>
+                  
+                  <td><%= link_to 'Edit', edit_student_path(student) %></td>
+                  <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+<br>
+        </div>
+    </div>
+        
+</div>
+
+
+
+
+
