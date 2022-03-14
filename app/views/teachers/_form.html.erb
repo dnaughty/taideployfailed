@@ -31,24 +31,24 @@
     <%= form.text_field :school_id %>
   </div>
 
-  
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
 
-<p>
-  <%= form_with(model: [@school, teacher], local: true) do |form| %>
-    <%= form.label :lessons %><br>
-    <% for lesson in @teacher.school.lessons %>
-      <%= check_box_tag "teacher[lesson_ids][]", lesson.id, @teacher.lessons.include?(lesson) %>
-      <%=h lesson.lessname %><br>
-    <% end %>
-  </p>
 
- 
-   <div class="actions">
+<%= form_with(model: [@school, teacher], local: true) do |form| %> 
+    <%= form.label :lessons %><br>
+        <% for lesson in @teacher.school.lessons %>
+            <%= check_box_tag "teacher[lesson_ids][]", lesson.id, @teacher.lessons.include?(lesson) %>
+            <%=h lesson.lessname %><br>
+        <% end %>
+
+<div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+

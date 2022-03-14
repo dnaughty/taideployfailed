@@ -4,7 +4,7 @@ class Lesson < ApplicationRecord
   has_many :enrollments
   has_many :students, through: :enrollments
 
-  has_many :teachings
-  has_many :teachers, through: :teachings
+  has_many :assignments
+  has_many :teachers, through: :assignments
 
 end
