@@ -24,8 +24,8 @@
                 <table>
                   <thead>
                     <tr>
-                      <th>Firstn</th>
-                      <th>Lastn</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
                       <th>Teachnum</th>
                       <th>School</th>
                       <th colspan="3"></th>
@@ -35,11 +35,10 @@
                   <tbody>
                     <% @teachers.each do |teacher| %>
                       <tr>
+                        <td><%= link_to teacher.lastn, teacher %></td>
                         <td><%= teacher.firstn %></td>
-                        <td><%= teacher.lastn %></td>
                         <td><%= teacher.teachnum %></td>
                         <td><%= teacher.school_id %></td>
-                        <td><%= link_to 'Show', teacher %></td>
                         <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
                         <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                       </tr>

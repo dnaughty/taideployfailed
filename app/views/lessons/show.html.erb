@@ -57,9 +57,18 @@
     <!-- Second Half -->
     <div class="col-md-9 p-0 bg-white h-md-100 loginarea">
         <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
-           <% for x in @lesson.students %>
-            <h1><%= link_to x.lastname, student_path(x.id) %></h1>    
-          <% end %>
+         <div class="row">
+            
+          
+            <div class="card col-md-12 ">
+             <% for x in @lesson.students %>
+              
+                <h4><%= link_to "#{x.lastname}, #{x.firstname}", student_path(x.id) %></h4> 
+                <h3>Class avg: 90%</h3>
+            <% end %>
+              </div>
+                  
+         </div>
         </div>
     </div>
         
