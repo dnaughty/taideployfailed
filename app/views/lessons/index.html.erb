@@ -10,8 +10,10 @@
     <div class="col-md-3 p-0 bg-indigo h-md-100">
         <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
             <div class="logoarea pt-5 pb-5">
-                <h1>Lessons</h1>
-                <%= link_to 'New Class', new_school_lesson_path %> | 
+                <h1>Classes</h1>
+                <% if current_user.role == "schooladmin" %>
+                    <%= link_to 'New Class', new_school_lesson_path %> | 
+                <% end %>
                 <%= link_to 'Back', district_schools_path(@school.district.id) %>
                
 
@@ -48,9 +50,10 @@
                     <td><%= lesson.starttime %></td>
                     <td><%= lesson.endtime %></td>
                     <td><%= lesson.school_id %></td>
-                    
-                    <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-                    <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                     
+                    <% if current_user.role == "superadmin" %>                         
+                      <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% end %>
                   </tr>
                 <% end %>
               </tbody>
@@ -61,3 +64,5 @@
     </div>
         
 </div>
+
+

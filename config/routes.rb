@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   
   
+  
   devise_for :users
   get 'landing/home'
 
@@ -12,7 +13,8 @@ Rails.application.routes.draw do
 
   resources :districts, shallow: true do
     resources :schools, shallow: true do
-      resources :lessons
+      resources :lessons, shallow: true do
+            end
       resources :students
       resources :teachers
     end 

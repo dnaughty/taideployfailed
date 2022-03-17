@@ -7,4 +7,6 @@ class Lesson < ApplicationRecord
   has_many :assignments
   has_many :teachers, through: :assignments
 
+  has_many :participations
+
 end

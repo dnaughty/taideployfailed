@@ -10,8 +10,9 @@
                  
                 <h3><%= link_to @school.sname %></h3>   
                  <h1>Teachers</h1>
-
-                <%= link_to 'New Teacher', new_school_teacher_path %> |
+                 <% if current_user == "schooladmin" %>
+                    <%= link_to 'New Teacher', new_school_teacher_path %> |
+                <% end %>
                 <%= link_to 'Back', school_path(@school) %>
             </div>
         </div>
@@ -39,8 +40,9 @@
                         <td><%= teacher.firstn %></td>
                         <td><%= teacher.teachnum %></td>
                         <td><%= teacher.school_id %></td>
-                        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-                        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <% if current_user == "superadmin" %>
+                            <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <% end %>
                       </tr>
                     <% end %>
                   </tbody>

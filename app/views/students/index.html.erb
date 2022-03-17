@@ -6,7 +6,9 @@
             <div class="logoarea pt-5 pb-5">
               <%= @school.sname %>
                 <h1>Students</h1>
-                <%= link_to 'New Student', new_school_student_path %> |
+                <% if current_user == "schooladmin" || current_user == "superadmin" %>
+                  <%= link_to 'New Student', new_school_student_path %> |
+                <% end %>
                 <%= link_to 'Back', district_schools_path(@school.district.id) %>
 
 
@@ -44,8 +46,10 @@
                   <td><%= student.gender %></td>
                   <td><%= student.school_id %></td>
                   
-                  <td><%= link_to 'Edit', edit_student_path(student) %></td>
-                  <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                 
+                  <% if current_user == "schooladmin" || current_user == "superadmin" %>
+                    <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
